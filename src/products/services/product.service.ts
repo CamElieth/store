@@ -20,9 +20,19 @@ export class ProductsService {
   }
 
   //Encontrar un registro
-   findOne(id: number) {
-    return this.productRepo.findOneBy({ id });
-   }
+   //findOne(id: number) {
+    //return this.productRepo.findOneBy({ id });
+   //}
+
+   findOne(id: number){
+    return this.productRepo.findOne({
+        where: {id},
+        relations: {
+           autor: true,
+        }
+   
+    });
+}
 
 
 

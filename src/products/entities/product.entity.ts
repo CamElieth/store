@@ -1,6 +1,9 @@
+import { User } from 'src/users/entities/user.entity';
 import {
     Column,
     Entity,
+    JoinColumn,
+    ManyToOne,
     PrimaryGeneratedColumn,
   } from 'typeorm';
   
@@ -21,6 +24,17 @@ import {
   
     @Column({ type: 'int8', nullable: false })
     stock: number;
+
+    @Column({ type: 'int8', nullable: false })
+    user_id: number;
+
+    @ManyToOne(()=> User)
+    @JoinColumn({
+      name: 'user_id', //el campo que relaciona a mi tabla
+      referencedColumnName: 'id' //este es el id del usuario
+  
+    })
+    autor: User;
   
     
   }
