@@ -1,11 +1,15 @@
+import { type } from 'os';
+import { timestamp } from 'rxjs';
 import { User } from 'src/users/entities/user.entity';
 import {
     Column,
+    CreateDateColumn,
     Entity,
     JoinColumn,
     ManyToOne,
     PrimaryGeneratedColumn,
   } from 'typeorm';
+import { Category } from './category.entity';
   
   
   @Entity()
@@ -25,8 +29,19 @@ import {
     @Column({ type: 'int8', nullable: false })
     stock: number;
 
-    @Column({ type: 'int8', nullable: false })
+    @Column({ type: 'int4', nullable: false })
     user_id: number;
+    
+    //@Column ({type:'varchar',nullable:true})
+    //filename:string;
+
+    @Column({type:'timestamp',default:()=>'CURRENT_TIMESTAMP'})
+    created_at:Date;
+
+    @Column({ type: 'int4', nullable: false })
+    category_id: number;
+
+    //relaciones
 
     @ManyToOne(()=> User)
     @JoinColumn({
@@ -35,6 +50,14 @@ import {
   
     })
     autor: User;
+
+    @ManyToOne(()=> Category)
+  @JoinColumn({
+   name: 'category_id', // campo que relaciona a mi tabla
+   referencedColumnName: 'id' //este es el id del usuario
+
+  })
+  Category: Category;
   
     
   }

@@ -1,9 +1,12 @@
 import {
+  IsDateString,
     IsNotEmpty,
     IsNumber,
     IsOptional,
     IsString,
     MaxLength,
+    isDateString,
+    isString,
   } from 'class-validator';
   
   export class CreateProductDto {
@@ -33,4 +36,18 @@ import {
     @IsNumber()
     @IsOptional()
     stock: number;
+
+    @IsString()
+    @IsOptional()
+    filename:string;
+
+    @IsDateString()
+    @IsOptional()
+    created_at:string
+
+    @IsNumber()
+    @IsNotEmpty()
+    category_id: number;
+
+
   }
