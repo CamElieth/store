@@ -10,6 +10,7 @@ import {
     PrimaryGeneratedColumn,
   } from 'typeorm';
 import { Category } from './category.entity';
+import { Proveedor } from './proveedor.entity';
   
   
   @Entity()
@@ -54,10 +55,18 @@ import { Category } from './category.entity';
     @ManyToOne(()=> Category)
   @JoinColumn({
    name: 'category_id', // campo que relaciona a mi tabla
-   referencedColumnName: 'id' //este es el id del usuario
+   referencedColumnName: 'id' //este es el id de la categoria
 
   })
   Category: Category;
+
+  @ManyToOne(()=> Proveedor)
+  @JoinColumn({
+   name: 'proveedor_id', // campo que relaciona a mi tabla
+   referencedColumnName: 'id' //este es el id del proveedor
+
+  })
+  Proveedor: Proveedor;
   
     
   }
