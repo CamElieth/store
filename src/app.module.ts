@@ -6,6 +6,7 @@ import { UsersModule } from './users/users.module';
 import { MarcasModule } from './marcas/marcas.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { FilesModule } from './files/files.module';
+import { FilesPdfModule } from './filesPDF/pdfFiles.module';
 
 @Module({
   imports: [
@@ -22,7 +23,8 @@ import { FilesModule } from './files/files.module';
     ProductsModule,
     UsersModule,
     MarcasModule,
-    FilesModule
+    FilesModule,
+    FilesPdfModule
   ],
   controllers: [AppController],
   providers: [AppService],
