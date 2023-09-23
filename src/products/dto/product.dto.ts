@@ -1,4 +1,5 @@
 import {
+  IsArray,
   IsDateString,
     IsNotEmpty,
     IsNumber,
@@ -48,6 +49,12 @@ import {
     @IsNumber()
     @IsNotEmpty()
     category_id: number;
+
+    @IsArray({ each: true })
+    @IsString()
+    @IsOptional()
+    images?: string[];
+    
 
 
   }

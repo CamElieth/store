@@ -7,10 +7,12 @@ import {
     Entity,
     JoinColumn,
     ManyToOne,
+    OneToMany,
     PrimaryGeneratedColumn,
   } from 'typeorm';
 import { Category } from './category.entity';
 import { Proveedor } from './proveedor.entity';
+import { ProductImage } from './product-image.entity';
   
   
   @Entity()
@@ -67,6 +69,10 @@ import { Proveedor } from './proveedor.entity';
 
   })
   Proveedor: Proveedor;
-  
-    
-  }
+
+//Un producto puede tener muchas imagenes
+@OneToMany(() => ProductImage, (productImage) => productImage.product, {
+  cascade: true,
+})
+images?: ProductImage[];
+}
