@@ -19,4 +19,5 @@ export class User {
 
   @Column({ type: 'boolean', default: true })
   active: boolean;
+    images: any;
 }
